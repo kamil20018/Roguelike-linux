@@ -1,2 +1,0 @@
-/usr/bin/ar qc ../../lib/libUI.a CMakeFiles/UI.dir/TextField.cpp.o CMakeFiles/UI.dir/TextField2.cpp.o CMakeFiles/UI.dir/Window.cpp.o
-/usr/bin/ranlib ../../lib/libUI.a

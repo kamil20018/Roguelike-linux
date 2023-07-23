@@ -1,2 +1,0 @@
-/usr/bin/ar qc ../../lib/libStates.a CMakeFiles/States.dir/GamePlay.cpp.o CMakeFiles/States.dir/MainMenu.cpp.o CMakeFiles/States.dir/StateManager.cpp.o CMakeFiles/States.dir/UiTestState.cpp.o
-/usr/bin/ranlib ../../lib/libStates.a
