@@ -1,0 +1,2 @@
+/usr/bin/ar qc ../../lib/libEnemy.a CMakeFiles/Enemy.dir/ActorManager.cpp.o CMakeFiles/Enemy.dir/Enemy.cpp.o CMakeFiles/Enemy.dir/EnemyChunk.cpp.o CMakeFiles/Enemy.dir/EnemyGenerator.cpp.o
+/usr/bin/ranlib ../../lib/libEnemy.a

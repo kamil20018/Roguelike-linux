@@ -1,0 +1,84 @@
+[
+  {
+    "name": "basic_ground",
+    "file": "dirt.png",
+    "isTraversable": true,
+    "decorations": {
+      "pebbles_1.png": {
+        "width": 1,
+        "height": 1
+      },
+      "pebbles_2.png": {
+        "width": 1,
+        "heigth": 1
+      }
+    }
+  },
+  {
+    "name": "basic_wall",
+    "file": "wall.png",
+    "isTraversable": false,
+    "decorations": {}
+  },
+  {
+    "name": "basic_grass",
+    "file": "grass.png",
+    "isTraversable": true,
+    "decorations": {
+      "flowers_1.png": {
+        "width": 1,
+        "height": 1
+      },
+      "flowers_2.png": {
+        "width": 1,
+        "height": 1
+      }
+    }
+  },
+  {
+    "name": "shallow_water",
+    "file": "shallow_water.png",
+    "isTraversable": true,
+    "decorations": {
+      "water_lily_1.png": {
+        "width": 1,
+        "height": 1
+      },
+      "cattail_1.png": {
+        "width": 1,
+        "height": 1
+      }
+    }
+  },
+  {
+    "name": "deep_water",
+    "file": "deep_water.png",
+    "isTraversable": false,
+    "decorations": {
+      "water_lily_1.png": {
+        "width": 1,
+        "height": 1
+      }
+    }
+  },
+  {
+    "name": "forest_ground",
+    "file": "forest.png",
+    "isTraversable": true,
+    "decorations": {
+      "tree_1.png": {
+        "width": 1,
+        "height": 1
+      },
+      "big_tree_1.png": {
+        "width": 1,
+        "height": 2
+      },
+      "big_rock_1.png": {
+        "width": 2,
+        "height": 2
+      }
+
+    }
+  }
+]

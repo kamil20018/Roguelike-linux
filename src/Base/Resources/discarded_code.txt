@@ -1,0 +1,54 @@
+
+void GamePlay::generateChunks() {
+	std::unordered_map<sf::Vector2i, TileChunk2> temp_chunks;
+
+	sf::Vector2i chunkSize = Settings::getChunkSize();
+	std::vector<std::vector<TileNames>> chunk(chunkSize.y, std::vector<TileNames>(chunkSize.x, TileNames::BASIC_GROUND));
+	std::cout << chunkSize.x << ", " << chunkSize.y << std::endl;
+	Tile ground = _assets->GetTile(TileNames::BASIC_GROUND);
+	Tile wall = _assets->GetTile(TileNames::BASIC_WALL);
+	Tile grass = _assets->GetTile(TileNames::BASIC_GRASS);
+	for (int a = 0; a < 25; a++) {
+		for (int i = 0; i < chunkSize.y; i++) {
+			for (int j = 0; j < chunkSize.x; j++) {
+
+				chunk[i][j] = TileNames::BASIC_GRASS;
+				if ((i * j + a + 1 + i + j) % 7 == 0) {
+					chunk[i][j] = TileNames::BASIC_WALL;
+				}
+
+			}
+		}
+
+		TileChunk2 tileChunk(sf::Vector2i(a % 5 - 2, a / 5 - 2), chunk, context);
+
+		tileChunk.generateSprite();
+
+		sf::Vector2i test(a % 5 - 2, a / 5 - 2);
+		std::cout << "chunks2: " << test.x << ", " << test.y << std::endl;
+		this->chunks2.insert({ test, tileChunk });
+
+	}
+
+}
+
+sf::Vector2i GamePlay::positionToLocal(sf::Vector2i position) {
+	int chunkWidth = Settings::getChunkSize().x;
+	int chunkHeight = Settings::getChunkSize().y;
+	int x = 0;
+	int y = 0;
+	if (position.x >= 0) {
+		x = position.x % chunkWidth;
+	}
+	else {
+		x = ((-position.x - 1) / chunkWidth + 1) * chunkWidth + position.x;
+	}
+
+	if (position.y >= 0) {
+		y = position.y % chunkHeight;
+	}
+	else {
+		y = ((-position.y - 1) / chunkHeight + 1) * chunkHeight + position.y;
+	}
+	return sf::Vector2i(x, y);
+}

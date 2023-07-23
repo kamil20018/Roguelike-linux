@@ -1,0 +1,8 @@
+/home/kamil/code/Roguelike/build/CMakeFiles/edit_cache.dir
+/home/kamil/code/Roguelike/build/CMakeFiles/rebuild_cache.dir
+/home/kamil/code/Roguelike/build/src/CMakeFiles/game.dir
+/home/kamil/code/Roguelike/build/src/CMakeFiles/edit_cache.dir
+/home/kamil/code/Roguelike/build/src/CMakeFiles/rebuild_cache.dir
+/home/kamil/code/Roguelike/build/src/Base/CMakeFiles/Base.dir
+/home/kamil/code/Roguelike/build/src/Base/CMakeFiles/edit_cache.dir
+/home/kamil/code/Roguelike/build/src/Base/CMakeFiles/rebuild_cache.dir

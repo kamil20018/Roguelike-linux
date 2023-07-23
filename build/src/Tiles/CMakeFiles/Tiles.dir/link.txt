@@ -1,0 +1,2 @@
+/usr/bin/ar qc ../../lib/libTiles.a CMakeFiles/Tiles.dir/Decoration.cpp.o CMakeFiles/Tiles.dir/MapParser.cpp.o CMakeFiles/Tiles.dir/Tile.cpp.o CMakeFiles/Tiles.dir/TileChunk.cpp.o CMakeFiles/Tiles.dir/TileLoader.cpp.o CMakeFiles/Tiles.dir/WorldGenerator.cpp.o
+/usr/bin/ranlib ../../lib/libTiles.a
