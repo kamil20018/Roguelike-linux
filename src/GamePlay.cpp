@@ -5,7 +5,7 @@ mouseButtonDown(false), keyPressed(false), zoomFactor(1.0f), passTurn(false)
 
 {
 
-	_assets->AddTexture("hero", "../src/Base/Resources/Textures/Hero/Hero.png");
+	_assets->AddTexture("hero", "../Resources/Textures/Hero/Hero.png");
 
 	gameplayView = _window->getDefaultView();
 	_window->setView(gameplayView);
@@ -39,7 +39,7 @@ void GamePlay::newGameInit() {
 
 void GamePlay::loadGameInit() {
 	std::cout << "kurwa pomocy\n";
-	std::ifstream reader("../src/Base/Save.json");
+	std::ifstream reader("../src/Save.json");
 	json saveFile;
 	reader >> saveFile;
 	reader.close();

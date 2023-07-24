@@ -2,7 +2,7 @@
 
 void TileLoader::loadTilesToContext(std::shared_ptr<Context>& context) {
 
-	std::ifstream reader("../src/Base/Tiles.json");
+	std::ifstream reader("../src/Tiles.json");
 	json j;
 	reader >> j;
 	reader.close();
@@ -11,13 +11,13 @@ void TileLoader::loadTilesToContext(std::shared_ptr<Context>& context) {
 	std::unordered_map<DecorTiles, sf::Texture> decorTextureMap;
 
 	for (const auto& tile : j) {
-		std::string tileTexturePath = "../src/Base/Resources/Textures/Tiles/";
+		std::string tileTexturePath = "../Resources/Textures/Tiles/";
 		tileTexturePath.append(tile["file"]);
 		sf::Texture texture;
 		texture.loadFromFile(tileTexturePath);
 		tileTextureMap.insert({ tileString.at(tile["name"]), texture });
 
-		std::string decorTexturePath = "../src/Base/Resources/Textures/Decorations/";
+		std::string decorTexturePath = "../Resources/Textures/Decorations/";
 		auto jsonDecors = tile["decorations"];
 		std::vector < std::string > decors;
 		for (auto decora : jsonDecors.items()) {

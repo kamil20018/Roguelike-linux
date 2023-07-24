@@ -10,8 +10,8 @@ Game::Game() : context(std::make_shared<Context>()) {
 	_window->create(sf::VideoMode(windowSize.x, windowSize.y), "Rougelike", sf::Style::Close);
 	_window->setFramerateLimit(60);
 	TileLoader::loadTilesToContext(this->context);
-	_assets->AddFont("pixel_font", "../src/Base/Resources/Fonts/manaspc.ttf");
-	_assets->AddTexture("goblin", "../src/Base/Resources/Textures/Enemies/Goblin.png");
+	_assets->AddFont("pixel_font", "../Resources/Fonts/manaspc.ttf");
+	_assets->AddTexture("goblin", "../Resources/Textures/Enemies/Goblin.png");
 
 	//_states->AddState(std::make_unique<MainMenu>(this->context));
 	_states->AddState(std::make_unique<GamePlay>(this->context, true));

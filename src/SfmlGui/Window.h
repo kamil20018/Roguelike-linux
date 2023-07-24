@@ -1,6 +1,6 @@
 #pragma once
 #include <SFML/Graphics.hpp>
-#include "Settings.h"
+//#include "Settings.h"
 
 namespace sfui {
 	class Window : public sf::Drawable {
@@ -18,7 +18,7 @@ namespace sfui {
 		sf::Vector2i oldMousePos;
 		sf::Vector2i newMousePos;
 		sf::Color color;
-		void alignToCentre();
+		void alignToCentre(sf::Vector2i windowSize);
 		bool mouseHold;
 		bool movingWindow;
 	};

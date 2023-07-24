@@ -6,7 +6,7 @@ namespace sfui {
 	}
 
 	Window::Window(sf::Vector2f size) : size(size), mouseHold(false) {
-		alignToCentre();
+		
 	}
 
 	void Window::draw(sf::RenderTarget& target, sf::RenderStates states) const {
@@ -48,8 +48,8 @@ namespace sfui {
 		movingWindow = false;
 	}
 
-	void Window::alignToCentre() {
-		sf::Vector2i windowSize = Settings::getWindowSize();
+	void Window::alignToCentre(sf::Vector2i windowSize) {
+		//sf::Vector2i windowSize = Settings::getWindowSize();
 		float xPos = ((float)windowSize.x - this->size.x) / 2.0f;
 		float yPos = ((float)windowSize.y - this->size.y) / 2.0f;
 		this->position = sf::Vector2f(xPos, yPos);
