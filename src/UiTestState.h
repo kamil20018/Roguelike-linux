@@ -11,6 +11,8 @@
 #include "TextField.h"
 #include "TextField2.h"
 #include "Window.h"
+#include "Slider.h"
+
 struct Context;
 
 class UiTestState : public State {
@@ -26,13 +28,5 @@ private:
 	sfui::Window window;
 	bool mouseHold;
 	bool mouseReleased;
-	
-	//TextField field;
-	//std::unordered_map<sf::Vector2i, Tile> tileMap;
-	//std::unique_ptr<Hero> hero;
-	//PerlinNoise noise;
-	//std::array<std::array<float, 598>, 598> pairs;
-	//int w;
-	//int h;
-	//int counter;
+	sfui::Slider slider;
 };

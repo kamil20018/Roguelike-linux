@@ -1,7 +1,10 @@
 #include "UiTestState.h"
 
-UiTestState::UiTestState(std::shared_ptr<Context>& context) : context(context) {
-	window = sfui::Window(sf::Vector2f(600, 400));
+UiTestState::UiTestState(std::shared_ptr<Context>& context) : context(context), mouseHold(false) {
+	//slider = sfui::Slider(sf::Vector2f(100, 10), sf::Vector2f(100, 10));
+	//slider = sfui::Slider(sf::Vector2f(10.0f, 10.0f), sf::Vector2f(1.0f, 1.0f));
+	slider = sfui::Slider(sf::Vector2f(300.0f, 30.0f), sf::Vector2f(10.0f, 10.0f));
+
 }
 
 UiTestState::~UiTestState() {
@@ -39,25 +42,26 @@ void UiTestState::ProcessInput() {
 }
 
 void UiTestState::Update() {
-	//window.handleInput(sf::Mouse::getPosition(*_window), mousePressed);
 
-	window.updateMousePosition(sf::Mouse::getPosition(*_window));
 
-	if (mouseHold) {
-		window.mousePressed(sf::Mouse::getPosition(*_window));
-	}
 
-	if (mouseReleased) {
-		window.mouseReleased();
-	}
 
-	//mouseHold = false;
-	//mouseReleased = false;
+	//window test
+	// window.updateMousePosition(sf::Mouse::getPosition(*_window));
+
+	// if (mouseHold) {
+	// 	window.mousePressed(sf::Mouse::getPosition(*_window));
+	// }
+
+	// if (mouseReleased) {
+	// 	window.mouseReleased();
+	// }
+
 }
 
 void UiTestState::Draw() {
 	_window->clear(sf::Color(200, 0, 0));
-	_window->draw(window);
+	_window->draw(slider);
 	_window->display();
 }
 

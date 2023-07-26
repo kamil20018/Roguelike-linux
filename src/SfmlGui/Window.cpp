@@ -5,7 +5,7 @@ namespace sfui {
 	
 	}
 
-	Window::Window(sf::Vector2f size) : size(size), mouseHold(false) {
+	Window::Window(sf::Vector2f size, sf::Vector2f position) : size(size), position(position), mouseHold(false) {
 		
 	}
 
