@@ -129,23 +129,18 @@ sf::Vector2i TileLoader::generateDecorTexturePositions() {
 
     int width = (int)(std::sqrt(area) * 1.3);
     int height = width;
-    printf("area: %d\n", area);
-    printf("width: %d, height: %d\n", width, height);
     std::vector<std::vector<bool>> occupied = std::vector<std::vector<bool>>(height, std::vector<bool>(width, false));
 
     for (auto decorSize : decorSizeVector) {
         auto size = decorSize.second;
-        printf("size x: %d, y: %d\n", size.x, size.y);
 
         bool fit = false;
 
         for (int i = 0; i < height; i++) {
             for (int j = 0; j < width; j++) {
                 if (fits(j, i, size, occupied)) {
-
                     for (int k = i; k < i + size.y; k++) {
                         for (int l = j; l < j + size.x; l++) {
-                            printf("%d %d\n", k, l);
                             occupied.at(k).at(l) = true;
                         }
                     }
