@@ -5,7 +5,6 @@ target_sources(SfmlGui
     ${CMAKE_CURRENT_LIST_DIR}/Window.cpp
     ${CMAKE_CURRENT_LIST_DIR}/TextField.cpp
     ${CMAKE_CURRENT_LIST_DIR}/TextField2.cpp
-    ${CMAKE_CURRENT_LIST_DIR}/Slider.cpp
 
   PUBLIC
     ${CMAKE_CURRENT_LIST_DIR}/Window.h

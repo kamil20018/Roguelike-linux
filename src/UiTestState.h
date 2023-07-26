@@ -27,6 +27,7 @@ class UiTestState : public State {
         std::shared_ptr<Context> context;
         sfui::Window window;
         bool mouseHold;
-        bool mouseReleased;
-        sfui::Slider slider;
+		bool mouseHoldChanged;
+		sf::Vector2i mousePosition;
+        sfui::Slider<int> slider;
 };
