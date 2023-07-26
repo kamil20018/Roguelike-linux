@@ -50,12 +50,12 @@ void UiTestState::Update() {
 		}
 	}
 
-	if(!mouseHold && mouseHoldChanged && slider.getIsCurrentlyHeld()){
+	if(!mouseHold && mouseHoldChanged && slider.isActive()){
 		slider.mouseReleased();
 	}
 
 	slider.update(mousePosition);
-
+	std::cout << slider.getValue() << std::endl;
 	// if(slider.wasClicked(mousePosition)){
 	// 	std::cout << "clicked\n";
 	// } else {

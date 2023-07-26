@@ -16,10 +16,11 @@ class Settings {
         static std::vector<long long> getSeed();
 
     private:
-        static sf::Vector2i WINDOW_SIZE;
-        static sf::Vector2i CHUNK_SIZE;
-        static int TILE_SIZE;
-        static int TILE_SCALE;
-        static std::vector<long long> SEED;
+        //all of the settings will be overwritten by ones loaded from the settings.json file
+        inline static sf::Vector2i WINDOW_SIZE = sf::Vector2i();
+        inline static sf::Vector2i CHUNK_SIZE = sf::Vector2i();
+        inline static int TILE_SIZE = 32;
+        inline static int TILE_SCALE = 2;
+        inline static std::vector<long long> SEED = std::vector<long long>();
 };
 

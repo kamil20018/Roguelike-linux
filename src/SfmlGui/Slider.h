@@ -16,8 +16,9 @@ namespace sfui {
             bool wasClicked(sf::Vector2i mousePosition);
             void mousePressed();
             void mouseReleased();
-            bool getIsCurrentlyHeld();
+            bool isActive();
             void update(sf::Vector2i mousePosition);
+            T getValue();
         private:
             //slider params
             sf::Color color;
@@ -90,7 +91,7 @@ bool sfui::Slider<T>::wasClicked(sf::Vector2i mousePosition) {
 }
 
 template<typename T>
-bool sfui::Slider<T>::getIsCurrentlyHeld() {
+bool sfui::Slider<T>::isActive() {
     return isCurrentlyHeld;    
 }
 
@@ -107,7 +108,6 @@ void sfui::Slider<T>::mouseReleased() {
 template<typename T>
 void sfui::Slider<T>::update(sf::Vector2i mousePosition) {
     if(isCurrentlyHeld){
-        std::cout << "current value: " << currValue << std::endl;
 
         sf::Vector2f barPosition = bar.getPosition();
         sf::Vector2f sliderPosition = slider.getPosition();
@@ -126,4 +126,9 @@ void sfui::Slider<T>::update(sf::Vector2i mousePosition) {
 
         currValue = minValue + (maxValue - minValue) / (slider.getSize().x / (bar.getPosition().x - slider.getPosition().x));
     }    
+}
+
+template<typename T>
+T sfui::Slider<T>::getValue() {
+    return currValue;  
 }

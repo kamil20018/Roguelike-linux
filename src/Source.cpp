@@ -8,11 +8,11 @@
 
 
 
-sf::Vector2i Settings::WINDOW_SIZE = sf::Vector2i(800, 600);
-sf::Vector2i Settings::CHUNK_SIZE = sf::Vector2i(28, 21);
-int Settings::TILE_SIZE = 32;
-int Settings::TILE_SCALE = 2;
-std::vector<long long> Settings::SEED = std::vector<long long>();
+//sf::Vector2i Settings::WINDOW_SIZE = sf::Vector2i(800, 600);
+// sf::Vector2i Settings::CHUNK_SIZE = sf::Vector2i(28, 21);
+// int Settings::TILE_SIZE = 32;
+// int Settings::TILE_SCALE = 2;
+// std::vector<long long> Settings::SEED = std::vector<long long>();
 
 int main() {
 
