@@ -30,7 +30,9 @@ while getopts 'brashc' OPTION; do
         a) 
             cd build
             time cmake --build . -- -j $thread_count
-            ./bin/game
+            if [ $? -eq 0 ]; then #only runs the game if the build succeeded
+                ./bin/game
+            fi
             ;;
         c)
             rm -rf build
