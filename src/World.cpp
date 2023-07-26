@@ -69,12 +69,9 @@ void World::updateLoadedChunks() {
 			}
 		}
 		for (sf::Vector2i toRem : chunksToRemove) {
-			std::cout << toRem.x << ", " << toRem.y << std::endl;
 			chunks.erase(toRem);
 		}
 	}
-
-	std::cout << "total chunks: " << totalChunks << " total tiles: " << totalTiles << std::endl;
 }
 
 void World::draw(sf::RenderTarget& target, sf::RenderStates states) const {

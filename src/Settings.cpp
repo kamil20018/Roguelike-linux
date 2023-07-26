@@ -21,9 +21,7 @@ sf::Vector2i Settings::getChunkSize() {
 }
 
 void Settings::updateSettings() {
-	std::cout << "a" << std::endl;
 	std::ifstream reader("../src/Settings.json");
-	std::cout << "b" << std::endl;
     json j;
 	reader >> j;
 	reader.close();

@@ -19,7 +19,6 @@ std::pair<sf::Vector2i, TileChunk> WorldGenerator::generateChunk(sf::Vector2i ch
 
 	for (int x = 0; x < chunkSize.x; x++) {
 		for (int y = 0; y < chunkSize.y; y++) {
-			//std::cout << x << ", " << y << std::endl;
 			float val = noise.perl((leftBound + x) * step, (bottomBound + y) * step);
 			chunk[y][x] = getTileName(val);
 		}

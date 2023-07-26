@@ -35,9 +35,7 @@ void Game::Run() {
 			_states->ProcessStateChange();
 			_states->GetCurrent()->ProcessInput();
 			_states->GetCurrent()->Update();
-			//sf::Clock drawTimer;
 			_states->GetCurrent()->Draw();
-			//std::cout << drawTimer.getElapsedTime().asMilliseconds() << std::endl;
 		}
 	}
 }

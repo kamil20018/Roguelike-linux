@@ -38,7 +38,6 @@ void GamePlay::newGameInit() {
 }
 
 void GamePlay::loadGameInit() {
-	std::cout << "kurwa pomocy\n";
 	std::ifstream reader("../src/Save.json");
 	json saveFile;
 	reader >> saveFile;

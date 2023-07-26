@@ -29,7 +29,6 @@ void ActorManager::updateEnemyChunks() {
 	for (auto pos : loadedChunks) {
 		auto enemies = chunks.at(pos).getOutOfBoundsEnemies();
 		for (auto& enemy : enemies) {
-			//std::cout << "pos in manager: " << enemy->getPosition().x << " " << enemy->getPosition().y << std::endl;
 			sf::Vector2i enemyPos = enemy->getPosition();
 			sf::Vector2i enemyChunkPos = globalPosToChunk(enemyPos);
 			chunks.at(enemyChunkPos).addEnemy(enemy);
@@ -75,9 +74,6 @@ void ActorManager::updateLoadedChunks() {
 		}
 	}
 
-	for (auto chunk : chunks) {
-		std::cout << chunk.first.x << ", " << chunk.first.y << std::endl;
-	}
 }
 
 void ActorManager::log() {
