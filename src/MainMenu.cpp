@@ -2,7 +2,7 @@
 
 #include <SFML/Window/Event.hpp>
 
-MainMenu::MainMenu(std::shared_ptr<Context>& context)
+MainMenu::MainMenu(std::shared_ptr<Context> &context)
     : context(context) {
 
     buttonPressed = false;

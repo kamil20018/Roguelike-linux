@@ -64,7 +64,7 @@ void World::updateLoadedChunks() {
     if (this->removeUnloaded) {
         std::vector<sf::Vector2i> chunksToRemove;
 
-        for (auto const& pair : chunks) {
+        for (auto const &pair : chunks) {
             bool found = false;
 
             for (sf::Vector2i pos : positions) {
@@ -84,7 +84,7 @@ void World::updateLoadedChunks() {
     }
 }
 
-void World::draw(sf::RenderTarget& target, sf::RenderStates states) const {
+void World::draw(sf::RenderTarget &target, sf::RenderStates states) const {
     for (sf::Vector2i chunkPos : loadedChunks) {
         target.draw(chunks.at(chunkPos), states);
     }

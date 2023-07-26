@@ -14,7 +14,7 @@ class World : public sf::Drawable, public Chunked<TileChunk> {
         World(std::shared_ptr<Context> context, json saveData);
         /*std::vector<sf::Vector2i> getPath(sf::Vector2i begin, sf::Vector2i end, bool unitVector, bool withStart, bool withEnd);*/
 
-        virtual void draw(sf::RenderTarget& target, sf::RenderStates states) const;
+        virtual void draw(sf::RenderTarget &target, sf::RenderStates states) const;
         json serialize();
     private:
         bool removeUnloaded;

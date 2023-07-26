@@ -4,7 +4,7 @@
 namespace std {
     template <class T>
     struct hash<sf::Vector2<T>> {
-        std::size_t operator()(const sf::Vector2<T>& v) const {
+        std::size_t operator()(const sf::Vector2<T> &v) const {
             using std::hash;
 
             // Compute individual hash values for first

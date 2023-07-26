@@ -9,7 +9,7 @@
 #include "TileChunk.h"
 class WorldGenerator {
     public:
-        WorldGenerator(std::shared_ptr<Context>& context);
+        WorldGenerator(std::shared_ptr<Context> &context);
         std::pair<sf::Vector2i, TileChunk> generateChunk(sf::Vector2i chunkPos);
         void setBlur(float blur);
         void setStep(float step);

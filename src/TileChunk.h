@@ -8,7 +8,7 @@
 class TileChunk : public sf::Drawable {
     public:
         TileChunk(sf::Vector2i pos, std::vector<std::vector<TileNames>> tiles, std::shared_ptr<Context> context);
-        virtual void draw(sf::RenderTarget& target, sf::RenderStates states) const;
+        virtual void draw(sf::RenderTarget &target, sf::RenderStates states) const;
         bool isTraversable(sf::Vector2i pos);
     private:
         int chunkSpacing; // adds a "border" to chunks (for debug purposes)

@@ -7,11 +7,11 @@ using json = nlohmann::json;
 
 class Hero : public sf::Drawable {
     public:
-        Hero(const sf::Texture& texture);
-        Hero(const sf::Texture& texture, json saveData);
+        Hero(const sf::Texture &texture);
+        Hero(const sf::Texture &texture, json saveData);
         void move(sf::Vector2i dir);
-        void setTexture(const sf::Texture& texture);
-        virtual void draw(sf::RenderTarget& target, sf::RenderStates states) const;
+        void setTexture(const sf::Texture &texture);
+        virtual void draw(sf::RenderTarget &target, sf::RenderStates states) const;
         sf::Vector2i getPosition();
         json serialize();
     private:

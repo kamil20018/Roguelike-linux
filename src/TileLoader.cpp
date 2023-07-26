@@ -1,6 +1,6 @@
 #include "TileLoader.h"
 
-void TileLoader::loadTilesToContext(std::shared_ptr<Context>& context) {
+void TileLoader::loadTilesToContext(std::shared_ptr<Context> &context) {
 
     std::ifstream reader("../src/Tiles.json");
     json j;
@@ -10,7 +10,7 @@ void TileLoader::loadTilesToContext(std::shared_ptr<Context>& context) {
     std::unordered_map<TileNames, sf::Texture> tileTextureMap;
     std::unordered_map<DecorTiles, sf::Texture> decorTextureMap;
 
-    for (const auto& tile : j) {
+    for (const auto &tile : j) {
         std::string tileTexturePath = "../Resources/Textures/Tiles/";
         tileTexturePath.append(tile["file"]);
         sf::Texture texture;
@@ -92,12 +92,12 @@ void TileLoader::loadTilesToContext(std::shared_ptr<Context>& context) {
 sf::Vector2i TileLoader::generateDecorTexturePositions() {
     std::vector<std::pair<DecorTiles, sf::Vector2i>> decorSizeVector;
 
-    for (auto& decor : decorSize) {
+    for (auto &decor : decorSize) {
         decorSizeVector.push_back(std::make_pair( decor.first, decor.second ));
     }
 
     std::sort(decorSizeVector.begin(), decorSizeVector.end(),
-    [](const std::pair<DecorTiles, sf::Vector2i>& a, const std::pair<DecorTiles, sf::Vector2i>& b) {
+    [](const std::pair<DecorTiles, sf::Vector2i> &a, const std::pair<DecorTiles, sf::Vector2i> &b) {
         return a.second.x * a.second.y > b.second.x * b.second.y;
     }
              );
@@ -112,7 +112,7 @@ sf::Vector2i TileLoader::generateDecorTexturePositions() {
                     }
                 }
             }
-        } catch (const std::out_of_range& e) {
+        } catch (const std::out_of_range &e) {
             return false;
         }
 

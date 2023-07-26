@@ -65,6 +65,6 @@ void StateManager::SwapPrevious() {
     this->swap = true;
 }
 
-std::shared_ptr<State>& StateManager::GetCurrent() {
+std::shared_ptr<State> &StateManager::GetCurrent() {
     return stateStack.back();
 }

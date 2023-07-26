@@ -12,7 +12,7 @@ bool Tile::getTraversable() {
     return this->isTraversable;
 }
 
-const std::vector<std::string>& Tile::getPossibleDecorations() {
+const std::vector<std::string> &Tile::getPossibleDecorations() {
     return possibleDecorations;
 }
 

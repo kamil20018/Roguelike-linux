@@ -11,7 +11,7 @@ class ActorManager : public Chunked<EnemyChunk>, public sf::Drawable {
     public:
         ActorManager(std::shared_ptr<Context> context, std::shared_ptr<World> world);
         ActorManager(std::shared_ptr<Context> context, std::shared_ptr<World> world, json saveData);
-        virtual void draw(sf::RenderTarget& target, sf::RenderStates states) const;
+        virtual void draw(sf::RenderTarget &target, sf::RenderStates states) const;
         void updateEnemyChunks();
         std::vector<std::shared_ptr<Enemy>> getEnemies();
         json serialize();

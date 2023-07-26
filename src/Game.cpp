@@ -9,7 +9,7 @@ Game::Game() : context(std::make_shared<Context>()) {
     sf::Vector2i windowSize = Settings::getWindowSize();
     _window->create(sf::VideoMode(windowSize.x, windowSize.y), "Rougelike", sf::Style::Close);
     _window->setFramerateLimit(60);
-	_window->setPosition(sf::Vector2i(100, 100));
+    _window->setPosition(sf::Vector2i(200, 200));
     TileLoader::loadTilesToContext(this->context);
     _assets->AddFont("pixel_font", "../Resources/Fonts/manaspc.ttf");
     _assets->AddTexture("goblin", "../Resources/Textures/Enemies/Goblin.png");

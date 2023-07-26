@@ -1,9 +1,9 @@
 #include "Enemy.h"
 
-Enemy::Enemy(const sf::Texture& texture, sf::Vector2i position, int viewDistance, std::shared_ptr<World> world) : texture(&texture), position(position), world(world), viewDistance(viewDistance) {
+Enemy::Enemy(const sf::Texture &texture, sf::Vector2i position, int viewDistance, std::shared_ptr<World> world) : texture(&texture), position(position), world(world), viewDistance(viewDistance) {
 }
 
-Enemy::Enemy(const sf::Texture& texture, sf::Vector2i position, std::shared_ptr<World> world, json saveData) : texture(&texture), world(world) {
+Enemy::Enemy(const sf::Texture &texture, sf::Vector2i position, std::shared_ptr<World> world, json saveData) : texture(&texture), world(world) {
     json pos = saveData["position"];
     this->viewDistance = saveData["viewDistance"];
     this->position = sf::Vector2i(pos[0], pos[1]);
@@ -38,7 +38,7 @@ void Enemy::takeTurn(WorldData data) {
 
 }
 
-void Enemy::draw(sf::RenderTarget& target, sf::RenderStates states) const {
+void Enemy::draw(sf::RenderTarget &target, sf::RenderStates states) const {
     sf::Sprite heroSprite;
     const int TILE_SCALE = Settings::getTileScale();
     heroSprite.setTexture(*this->texture);

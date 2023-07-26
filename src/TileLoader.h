@@ -9,7 +9,7 @@ struct Context;
 
 class TileLoader {
     public:
-        static void loadTilesToContext(std::shared_ptr<Context>& context);
+        static void loadTilesToContext(std::shared_ptr<Context> &context);
         static sf::Vector2i generateDecorTexturePositions();
 };
 

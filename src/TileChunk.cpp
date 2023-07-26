@@ -69,7 +69,7 @@ TileChunk::TileChunk(sf::Vector2i pos, std::vector<std::vector<TileNames>> tiles
     }
 }
 
-void TileChunk::draw(sf::RenderTarget& target, sf::RenderStates states) const {
+void TileChunk::draw(sf::RenderTarget &target, sf::RenderStates states) const {
     states.texture = tileSet;
     target.draw(tileVertices, states);
 
@@ -138,7 +138,7 @@ void TileChunk::generateDecorations(float density) {
     }
 
     std::sort(decorations.begin(), decorations.end(),
-    [](const std::pair<DecorTiles, sf::Vector2i>& dec1, const std::pair <DecorTiles, sf::Vector2i>& dec2) {
+    [](const std::pair<DecorTiles, sf::Vector2i> &dec1, const std::pair <DecorTiles, sf::Vector2i> &dec2) {
         return dec1.second.y < dec2.second.y;
     }
              );

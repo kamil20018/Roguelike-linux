@@ -9,20 +9,20 @@ void EnemyChunk::addEnemy(std::shared_ptr<Enemy> enemy) {
     enemies.push_back(enemy);
 }
 
-void EnemyChunk::draw(sf::RenderTarget& target, sf::RenderStates states) const {
-    for (auto const& enemy : enemies) {
+void EnemyChunk::draw(sf::RenderTarget &target, sf::RenderStates states) const {
+    for (auto const &enemy : enemies) {
         target.draw(*enemy);
     }
 }
 
 void EnemyChunk::takeTurn(WorldData data) {
-    for (auto& enemy : enemies) {
+    for (auto &enemy : enemies) {
         enemy->takeTurn(data);
     }
 }
 
 bool EnemyChunk::isTraversable(sf::Vector2i pos) {
-    for (auto& enemy : enemies) {
+    for (auto &enemy : enemies) {
         if (enemy->getPosition() == pos) {
             return false;
         }
@@ -54,7 +54,7 @@ json EnemyChunk::serialize() {
 
     enemyChunk["position"] = { position.x, position.y };
 
-    for (auto& enemy : enemies) {
+    for (auto &enemy : enemies) {
         enemyChunk["enemies"].push_back(enemy->serialize());
     }
 

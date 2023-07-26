@@ -16,7 +16,7 @@ class EnemyChunk : public sf::Drawable {
     public:
         EnemyChunk(sf::Vector2i pos);
         void addEnemy(std::shared_ptr<Enemy> enemy);
-        virtual void draw(sf::RenderTarget& target, sf::RenderStates states) const;
+        virtual void draw(sf::RenderTarget &target, sf::RenderStates states) const;
         void takeTurn(WorldData data);
         bool isTraversable(sf::Vector2i pos);
         std::vector<std::shared_ptr<Enemy>> getOutOfBoundsEnemies();

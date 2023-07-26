@@ -81,7 +81,7 @@ struct Node {
     int h_val; // potential min path to destination
     int f_val; // sum of g and h
     sf::Vector2i parentPos;
-    bool operator <(Node const& rhs) const {
+    bool operator <(Node const &rhs) const {
         if (rhs.f_val == this->f_val) {
             return this->h_val < rhs.h_val;
         }

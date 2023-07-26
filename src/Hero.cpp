@@ -1,10 +1,10 @@
 #include "Hero.h"
 
-Hero::Hero(const sf::Texture& texture) : position(sf::Vector2i(0, 0)) {
+Hero::Hero(const sf::Texture &texture) : position(sf::Vector2i(0, 0)) {
     this->texture = texture;
 }
 
-Hero::Hero(const sf::Texture& texture, json saveData) {
+Hero::Hero(const sf::Texture &texture, json saveData) {
 
 
 
@@ -20,11 +20,11 @@ void Hero::move(sf::Vector2i dir) {
     this->position += dir;
 }
 
-void Hero::setTexture(const sf::Texture& texture) {
+void Hero::setTexture(const sf::Texture &texture) {
     this->texture = texture;
 }
 
-void Hero::draw(sf::RenderTarget& target, sf::RenderStates states) const {
+void Hero::draw(sf::RenderTarget &target, sf::RenderStates states) const {
     sf::Sprite heroSprite;
     const int TILE_SCALE = Settings::getTileScale();
     heroSprite.setTexture(this->texture);

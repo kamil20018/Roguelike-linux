@@ -332,7 +332,7 @@ std::vector<sf::Vector2i> GamePlay::getPath(sf::Vector2i begin, sf::Vector2i end
     while (!openMap.empty()) {
         current = openMap.begin()->second;
 
-        for (const auto& pair : openMap) {
+        for (const auto &pair : openMap) {
             if (pair.second < current) {
                 current = pair.second;
             }

@@ -17,7 +17,7 @@ class StateManager {
         void PopCurrent();
         void ProcessStateChange();
         void SwapPrevious();
-        std::shared_ptr<State>& GetCurrent();
+        std::shared_ptr<State> &GetCurrent();
 
     private:
         std::vector<std::shared_ptr<State>> stateStack;

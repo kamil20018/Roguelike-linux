@@ -21,7 +21,7 @@ class MainMenu : public State {
 
 
     public:
-        MainMenu(std::shared_ptr<Context>& context);
+        MainMenu(std::shared_ptr<Context> &context);
         ~MainMenu();
 
         void Init() override;

@@ -14,14 +14,14 @@ ActorManager::ActorManager(std::shared_ptr<Context> context, std::shared_ptr<Wor
 
     auto loadedChunks = enemyGenerator.loadChunkFromJson(saveData["enemyChunks"]);
 
-    for (auto& chunk : loadedChunks) {
+    for (auto &chunk : loadedChunks) {
         chunks.insert({ chunk.getPosition(), std::move(chunk) });
     }
 
     updateLoadedChunks();
 }
 
-void ActorManager::draw(sf::RenderTarget& target, sf::RenderStates states) const {
+void ActorManager::draw(sf::RenderTarget &target, sf::RenderStates states) const {
     for (sf::Vector2i chunkPos : loadedChunks) {
         target.draw(chunks.at(chunkPos), states);
     }
@@ -30,7 +30,7 @@ void ActorManager::updateEnemyChunks() {
     for (auto pos : loadedChunks) {
         auto enemies = chunks.at(pos).getOutOfBoundsEnemies();
 
-        for (auto& enemy : enemies) {
+        for (auto &enemy : enemies) {
 
             sf::Vector2i enemyPos = enemy->getPosition();
             sf::Vector2i enemyChunkPos = globalPosToChunk(enemyPos);
@@ -53,7 +53,7 @@ std::vector<std::shared_ptr<Enemy>> ActorManager::getEnemies() {
 json ActorManager::serialize() {
     json actorManager;
 
-    for (auto& it : chunks) {
+    for (auto &it : chunks) {
         actorManager["enemyChunks"].push_back(it.second.serialize());
     }
 

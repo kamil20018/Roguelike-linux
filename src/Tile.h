@@ -69,7 +69,7 @@ class Tile {
     public:
         Tile(json j);
         bool getTraversable();
-        const std::vector<std::string>& getPossibleDecorations();
+        const std::vector<std::string> &getPossibleDecorations();
         std::string getName();
         void print();
     private:

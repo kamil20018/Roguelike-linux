@@ -1,6 +1,6 @@
 #include "WorldGenerator.h"
 
-WorldGenerator::WorldGenerator(std::shared_ptr<Context>& context) : context(context), step(0.005f) {
+WorldGenerator::WorldGenerator(std::shared_ptr<Context> &context) : context(context), step(0.005f) {
     //this->globalNoise = std::make_shared<PerlinNoise>();
     this->blur = 0.1f;
     std::random_device rd;
