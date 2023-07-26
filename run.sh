@@ -1,5 +1,7 @@
 #! /bin/bash
 
+thread_count=$(nproc --all)
+
 while getopts 'brashc' OPTION; do
     case "$OPTION" in
         h)
@@ -19,7 +21,7 @@ while getopts 'brashc' OPTION; do
             ;;
         b)
             cd build
-            cmake --build .
+            time cmake --build . -- -j $thread_count
             ;;
         r)
             cd build
@@ -27,7 +29,7 @@ while getopts 'brashc' OPTION; do
             ;;
         a) 
             cd build
-            cmake --build .
+            time cmake --build . -- -j $thread_count
             ./bin/game
             ;;
         c)
