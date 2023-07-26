@@ -3,40 +3,40 @@
 #include <SFML/Graphics.hpp>
 #include <memory>
 enum class Alignment {
-	MIDDLE_LEFT,
-	MIDDLE_MIDDLE,
-	MIDDLE_RIGHT,
+    MIDDLE_LEFT,
+    MIDDLE_MIDDLE,
+    MIDDLE_RIGHT,
 };
 
 class TextField : public sf::Drawable {
 
-public:
-	TextField();
-	//TextField(const TextField& other);
-	TextField(std::string text, sf::Vector2f position, const sf::Font& font, bool hardBounds);
-	void setAlignment(Alignment alignment);
-	void setBackgroundColor(sf::Color color);
-	void setScalingBoundsSize(sf::Vector2f boundsSize);
-	void setHardBoundsSize(sf::Vector2f boundsSize);
-	void setFontSize(int size);
-	void setFontColor(sf::Color color);
-	void setSelected(bool selected);
-	void setPadding(float padding);
-	void setString(std::string str);
-	virtual void draw(sf::RenderTarget& target, sf::RenderStates states) const;
+    public:
+        TextField();
+        //TextField(const TextField& other);
+        TextField(std::string text, sf::Vector2f position, const sf::Font& font, bool hardBounds);
+        void setAlignment(Alignment alignment);
+        void setBackgroundColor(sf::Color color);
+        void setScalingBoundsSize(sf::Vector2f boundsSize);
+        void setHardBoundsSize(sf::Vector2f boundsSize);
+        void setFontSize(int size);
+        void setFontColor(sf::Color color);
+        void setSelected(bool selected);
+        void setPadding(float padding);
+        void setString(std::string str);
+        virtual void draw(sf::RenderTarget& target, sf::RenderStates states) const;
 
-private:
-	void update();
-	sf::Vector2f position;
-	sf::Vector2f hardBoundsSize;
-	sf::Vector2f scalingBoundsSize;
-	sf::Text text;
-	sf::RectangleShape background;
-	sf::Font font;
-	std::shared_ptr<sf::RenderTexture> texture;
-	sf::Sprite sprite;
-	Alignment alignment = Alignment::MIDDLE_MIDDLE;
-	float padding = 0.0f;
-	bool hardBounds;
-	bool wasSelected;
+    private:
+        void update();
+        sf::Vector2f position;
+        sf::Vector2f hardBoundsSize;
+        sf::Vector2f scalingBoundsSize;
+        sf::Text text;
+        sf::RectangleShape background;
+        sf::Font font;
+        std::shared_ptr<sf::RenderTexture> texture;
+        sf::Sprite sprite;
+        Alignment alignment = Alignment::MIDDLE_MIDDLE;
+        float padding = 0.0f;
+        bool hardBounds;
+        bool wasSelected;
 };

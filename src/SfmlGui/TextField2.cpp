@@ -1,36 +1,35 @@
 #include "TextField2.h"
 
 TextField2::TextField2(std::string text) : text(text) {
-	processText();
+    processText();
 }
 
 void TextField2::processText() {
-	std::vector<std::string> words;
-	std::string word;
-	for (auto letter : text) {
+    std::vector<std::string> words;
+    std::string word;
 
-		if (letter != ' ' && letter != '\n') {
-			word += letter;
-		}
-		else {
-			words.push_back(word);
-			word.clear();
-		}
+    for (auto letter : text) {
 
-	}
+        if (letter != ' ' && letter != '\n') {
+            word += letter;
+        } else {
+            words.push_back(word);
+            word.clear();
+        }
 
-	int letterCap = 50;
+    }
 
-	std::string line;
+    int letterCap = 50;
 
-	for (auto word : words) {
-		if (line.length() + word.length() > letterCap) {
-			std::cout << line << std::endl;
-			line.clear();
-		}
-		else {
-			line += word + " ";
-		}
+    std::string line;
 
-	}
+    for (auto word : words) {
+        if (line.length() + word.length() > letterCap) {
+            std::cout << line << std::endl;
+            line.clear();
+        } else {
+            line += word + " ";
+        }
+
+    }
 }

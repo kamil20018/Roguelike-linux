@@ -1,6 +1,6 @@
 #! /bin/bash
 
-while getopts 'brash' OPTION; do
+while getopts 'brashc' OPTION; do
     case "$OPTION" in
         h)
             echo "run - can set up the cmake project, build it and run it."
@@ -11,6 +11,7 @@ while getopts 'brash' OPTION; do
             echo "-b   builds the project"
             echo "-r   runs the project"
             echo "-a   builds and runs the project"
+            echo "-c   removes all of the build files"
             ;;
         s)
             mkdir build
@@ -28,6 +29,9 @@ while getopts 'brash' OPTION; do
             cd build
             cmake --build .
             ./bin/game
+            ;;
+        c)
+            rm -rf build
             ;;
     esac
 done

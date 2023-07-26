@@ -16,10 +16,10 @@ std::vector<long long> Settings::SEED = std::vector<long long>();
 
 int main() {
 
-	Settings::updateSettings();
+    Settings::updateSettings();
 
-	Game game;
-	game.Run();
+    Game game;
+    game.Run();
 
-	return 0;
+    return 0;
 }

@@ -16,17 +16,17 @@
 struct Context;
 
 class UiTestState : public State {
-public:
-	UiTestState(std::shared_ptr<Context>& context);
-	~UiTestState();
-	void Init() override;
-	void ProcessInput() override;
-	void Update() override;
-	void Draw() override;
-private:
-	std::shared_ptr<Context> context;
-	sfui::Window window;
-	bool mouseHold;
-	bool mouseReleased;
-	sfui::Slider slider;
+    public:
+        UiTestState(std::shared_ptr<Context>& context);
+        ~UiTestState();
+        void Init() override;
+        void ProcessInput() override;
+        void Update() override;
+        void Draw() override;
+    private:
+        std::shared_ptr<Context> context;
+        sfui::Window window;
+        bool mouseHold;
+        bool mouseReleased;
+        sfui::Slider slider;
 };
