@@ -1,11 +1,11 @@
 #include "Window.h"
 
 namespace sfui {
-    Window::Window() : size(sf::Vector2f(1.0f, 1.0f)), mouseHold(false) {
+    Window::Window() : size(sf::Vector2f(1.0f, 1.0f)), isCurrentlyHeld(false) {
 
     }
 
-    Window::Window(sf::Vector2f size, sf::Vector2f position) : size(size), position(position), mouseHold(false) {
+    Window::Window(sf::Vector2f size, sf::Vector2f position) : size(size), position(position), isCurrentlyHeld(false) {
 
     }
 
@@ -17,11 +17,11 @@ namespace sfui {
         target.draw(rectangle);
     }
 
-    void Window::updateMousePosition(sf::Vector2i mousePosition) {
+    void Window::update(sf::Vector2i mousePosition) {
         oldMousePos = newMousePos;
         newMousePos = mousePosition;
 
-        if (movingWindow) {
+        if (isCurrentlyHeld) {
             position += sf::Vector2f(newMousePos.x - oldMousePos.x, newMousePos.y - oldMousePos.y);
         }
 
@@ -34,19 +34,12 @@ namespace sfui {
                && mousePosition.y < position.y + size.y;
     }
 
-    void Window::mousePressed(sf::Vector2i mousePosition) {
-        if (wasClicked(mousePosition)) {
-            if (mouseHold == false) {
-                movingWindow = true;
-            }
-
-            mouseHold = true;
-        }
+    void Window::mousePressed() {
+        isCurrentlyHeld = true;
     }
 
     void Window::mouseReleased() {
-        mouseHold = false;
-        movingWindow = false;
+        isCurrentlyHeld = false;
     }
 
     void Window::alignToCentre(sf::Vector2i windowSize) {
@@ -56,4 +49,8 @@ namespace sfui {
         this->position = sf::Vector2f(xPos, yPos);
     }
 
+}
+
+bool sfui::Window::isActive() {
+    return isCurrentlyHeld;    
 }

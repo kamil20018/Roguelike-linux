@@ -7,9 +7,11 @@ namespace sfui {
             Window();
             Window(sf::Vector2f size, sf::Vector2f position);
             virtual void draw(sf::RenderTarget& target, sf::RenderStates states) const;
-            void updateMousePosition(sf::Vector2i mousePosition);
+            void update(sf::Vector2i mousePosition);
             bool wasClicked(sf::Vector2i mousePosition);
-            void mousePressed(sf::Vector2i mousePosition);
+
+            bool isActive();
+            void mousePressed();
             void mouseReleased();
         private:
             sf::Vector2f size;
@@ -18,8 +20,7 @@ namespace sfui {
             sf::Vector2i newMousePos;
             sf::Color color;
             void alignToCentre(sf::Vector2i windowSize);
-            bool mouseHold;
-            bool movingWindow;
+            bool isCurrentlyHeld;
     };
 }
 

@@ -5,6 +5,8 @@ UiTestState::UiTestState(std::shared_ptr<Context> &context) : context(context), 
     slider.setBarSize(sf::Vector2f(7.0f, 20.0f));
     slider.setBarColor(sf::Color::White);
     slider.setBarOutline(sf::Color::Black, 1.0f);
+
+	window = sfui::Window(sf::Vector2f(200.0f, 100.0f), sf::Vector2f(100.0f, 100.0f));
 }
 
 UiTestState::~UiTestState() {}
@@ -40,9 +42,8 @@ void UiTestState::ProcessInput() {
 }
 
 void UiTestState::Update() {
+	
 	mousePosition = sf::Mouse::getPosition(*_window);
-
-
 
 	if(mouseHold && mouseHoldChanged){
 		if(slider.wasClicked(mousePosition)){
@@ -55,28 +56,29 @@ void UiTestState::Update() {
 	}
 
 	slider.update(mousePosition);
-	std::cout << slider.getValue() << std::endl;
-	// if(slider.wasClicked(mousePosition)){
-	// 	std::cout << "clicked\n";
-	// } else {
-	// 	std::cout << "not clicked\n";
-	// }
-    //window test
-    // window.updateMousePosition(mousePosition);
 
-    // if (mouseHold) {
-    //  window.mousePressed(mousePosition));
-    // }
+	// uncomment to check if the slider returns a correct value
+	// std::cout << slider.getValue() << std::endl;
 
-    // if (!mouseHold) {
-    //  window.mouseReleased();
-    // }
+	if(mouseHold && mouseHoldChanged){
+		if(window.wasClicked(mousePosition)){
+			window.mousePressed();
+		}
+	}
+
+	if(!mouseHold && mouseHoldChanged && window.isActive()){
+		window.mouseReleased();
+	}
+
+	window.update(mousePosition);
+
 
 	mouseHoldChanged = false;
 }
 
 void UiTestState::Draw() {
     _window->clear(sf::Color(200, 0, 0));
+    _window->draw(window);
     _window->draw(slider);
     _window->display();
 }

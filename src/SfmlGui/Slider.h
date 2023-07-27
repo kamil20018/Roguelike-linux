@@ -30,8 +30,6 @@ namespace sfui {
            
             //mouse info
             bool isCurrentlyHeld;
-            sf::Vector2i oldMousePos;
-            sf::Vector2i newMousePos; 
 
             //value range
             T minValue;
