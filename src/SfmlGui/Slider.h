@@ -1,11 +1,10 @@
 #pragma once
-#include <SFML/Graphics.hpp>
 #include <algorithm>
 #include <iostream>
-
+#include "UiElement.h"
 namespace sfui {
     template<typename T>
-    class Slider : public sf::Drawable {
+    class Slider : public UiElement {
         public:
             Slider();
             Slider(sf::Vector2f size, sf::Vector2f position, T minValue, T maxValue);
@@ -13,11 +12,9 @@ namespace sfui {
             void setBarColor(sf::Color color);
             void setBarOutline(sf::Color color, float thickness);
             virtual void draw(sf::RenderTarget& target, sf::RenderStates states) const;
-            bool wasClicked(sf::Vector2i mousePosition);
-            void mousePressed();
-            void mouseReleased();
-            bool isActive();
+            
             void update(sf::Vector2i mousePosition);
+            bool wasClicked(sf::Vector2i mousePosition);
             T getValue();
         private:
             //slider params
@@ -27,9 +24,6 @@ namespace sfui {
             //movable bar params
             float barPostion;
             sf::RectangleShape bar;
-           
-            //mouse info
-            bool isCurrentlyHeld;
 
             //value range
             T minValue;
@@ -38,10 +32,10 @@ namespace sfui {
     };
 }
 
-template<typename T> sfui::Slider<T>::Slider() : isCurrentlyHeld(false) {}
+template<typename T> sfui::Slider<T>::Slider() : UiElement() {}
 
 template<typename T> sfui::Slider<T>::Slider(sf::Vector2f size, sf::Vector2f position, T minValue, T maxValue) 
-        : isCurrentlyHeld(false)
+        : UiElement()
         , minValue(minValue)
         , maxValue(maxValue) 
         , currValue(minValue) {
@@ -86,21 +80,6 @@ bool sfui::Slider<T>::wasClicked(sf::Vector2i mousePosition) {
            mousePosition.x < sliderPosition.x + sliderSize.x &&
            sliderPosition.y < mousePosition.y &&
            mousePosition.y < sliderPosition.y + sliderSize.y;     
-}
-
-template<typename T>
-bool sfui::Slider<T>::isActive() {
-    return isCurrentlyHeld;    
-}
-
-template<typename T>
-void sfui::Slider<T>::mousePressed() {
-    isCurrentlyHeld = true;    
-}
-
-template<typename T>
-void sfui::Slider<T>::mouseReleased() {
-    isCurrentlyHeld = false;    
 }
 
 template<typename T>

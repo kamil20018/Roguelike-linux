@@ -1,11 +1,11 @@
 #include "Window.h"
 
 namespace sfui {
-    Window::Window() : size(sf::Vector2f(1.0f, 1.0f)), isCurrentlyHeld(false) {
+    Window::Window() : size(sf::Vector2f(1.0f, 1.0f)), UiElement() {
 
     }
 
-    Window::Window(sf::Vector2f size, sf::Vector2f position) : size(size), position(position), isCurrentlyHeld(false) {
+    Window::Window(sf::Vector2f size, sf::Vector2f position) : size(size), position(position), UiElement() {
 
     }
 
@@ -34,13 +34,7 @@ namespace sfui {
                && mousePosition.y < position.y + size.y;
     }
 
-    void Window::mousePressed() {
-        isCurrentlyHeld = true;
-    }
 
-    void Window::mouseReleased() {
-        isCurrentlyHeld = false;
-    }
 
     void Window::alignToCentre(sf::Vector2i windowSize) {
         //sf::Vector2i windowSize = Settings::getWindowSize();
@@ -51,6 +45,4 @@ namespace sfui {
 
 }
 
-bool sfui::Window::isActive() {
-    return isCurrentlyHeld;    
-}
+
