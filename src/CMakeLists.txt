@@ -59,5 +59,4 @@ target_sources(game
     ${CMAKE_CURRENT_LIST_DIR}/TileChunk.h
     ${CMAKE_CURRENT_LIST_DIR}/TileLoader.h
     ${CMAKE_CURRENT_LIST_DIR}/WorldGenerator.h
-
   )

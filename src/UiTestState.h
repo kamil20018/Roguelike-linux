@@ -12,7 +12,7 @@
 #include "TextField2.h"
 #include "Window.h"
 #include "Slider.h"
-
+#include "InputField.h"
 struct Context;
 
 class UiTestState : public State {
@@ -25,9 +25,11 @@ class UiTestState : public State {
         void Draw() override;
     private:
         std::shared_ptr<Context> context;
-        sfui::Window window;
+
         bool mouseHold;
-		bool mouseHoldChanged;
-		sf::Vector2i mousePosition;
-        sfui::Slider<int> slider;
+        bool mouseHoldChanged;
+        sf::Vector2i mousePosition;
+
+        std::shared_ptr<int> sliderValue;
+        std::vector<std::unique_ptr<sfui::UiElement>> UiElements;
 };

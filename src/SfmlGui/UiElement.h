@@ -16,6 +16,9 @@ namespace sfui {
                 isCurrentlyHeld = false;    
             }
 
+            virtual void mouseMovement(sf::Vector2i mousePosition){};
+            virtual void keyboardInput(sf::Keyboard::Key keyboardInput){};
+            virtual bool wasClicked(sf::Vector2i mousePosition) = 0;            
         protected:
 
             UiElement() : isCurrentlyHeld(false){};

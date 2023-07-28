@@ -1,12 +1,16 @@
 #include "UiTestState.h"
 
 UiTestState::UiTestState(std::shared_ptr<Context> &context) : context(context), mouseHold(false) {
-    slider = sfui::Slider<int>(sf::Vector2f(300.0f, 8.0f), sf::Vector2f(10.0f, 10.0f), 1, 100);
-    slider.setBarSize(sf::Vector2f(7.0f, 20.0f));
-    slider.setBarColor(sf::Color::White);
-    slider.setBarOutline(sf::Color::Black, 1.0f);
 
-	window = sfui::Window(sf::Vector2f(200.0f, 100.0f), sf::Vector2f(100.0f, 100.0f));
+    sliderValue = std::make_shared<int>(10);
+    std::unique_ptr<sfui::Slider<int>> slider = std::make_unique<sfui::Slider<int>>(sf::Vector2f(300.0f, 8.0f), sf::Vector2f(10.0f, 10.0f), 1, 100, sliderValue);
+    slider->setBarSize(sf::Vector2f(7.0f, 20.0f));
+    slider->setBarColor(sf::Color::White);
+    slider->setBarOutline(sf::Color::Black, 1.0f);
+
+    UiElements.push_back(std::move(slider));
+    UiElements.push_back(std::make_unique<sfui::Window>(sf::Vector2f(200.0f, 100.0f), sf::Vector2f(100.0f, 100.0f)));
+
 }
 
 UiTestState::~UiTestState() {}
@@ -26,14 +30,16 @@ void UiTestState::ProcessInput() {
                     break;
             }
         } else if (event.type == sf::Event::MouseButtonPressed) {
-			if(!mouseHold){
-				mouseHoldChanged = true;
-			}
+            if(!mouseHold) {
+                mouseHoldChanged = true;
+            }
+
             mouseHold = true;
         } else if (event.type == sf::Event::MouseButtonReleased && mouseHold == true) {
-			if(mouseHold){
-				mouseHoldChanged = true;
-			}
+            if(mouseHold) {
+                mouseHoldChanged = true;
+            }
+
             mouseHold = false;
             event.type = sf::Event::Count;
         }
@@ -42,44 +48,33 @@ void UiTestState::ProcessInput() {
 }
 
 void UiTestState::Update() {
-	
-	mousePosition = sf::Mouse::getPosition(*_window);
 
-	if(mouseHold && mouseHoldChanged){
-		if(slider.wasClicked(mousePosition)){
-			slider.mousePressed();
-		}
-	}
+    mousePosition = sf::Mouse::getPosition(*_window);
 
-	if(!mouseHold && mouseHoldChanged && slider.isActive()){
-		slider.mouseReleased();
-	}
+    for(auto &UiElement : UiElements) {
+        if(mouseHold && mouseHoldChanged) {
+            if(UiElement->wasClicked(mousePosition)) {
+                UiElement->mousePressed();
+            }
+        }
 
-	slider.update(mousePosition);
+        if(!mouseHold && mouseHoldChanged && UiElement->isActive()) {
+            UiElement->mouseReleased();
+        }
 
-	// uncomment to check if the slider returns a correct value
-	// std::cout << slider.getValue() << std::endl;
+        UiElement->mouseMovement(mousePosition);
+    }
 
-	if(mouseHold && mouseHoldChanged){
-		if(window.wasClicked(mousePosition)){
-			window.mousePressed();
-		}
-	}
-
-	if(!mouseHold && mouseHoldChanged && window.isActive()){
-		window.mouseReleased();
-	}
-
-	window.update(mousePosition);
-
-
-	mouseHoldChanged = false;
+    mouseHoldChanged = false;
 }
 
 void UiTestState::Draw() {
     _window->clear(sf::Color(200, 0, 0));
-    _window->draw(window);
-    _window->draw(slider);
+
+    for(auto &UiElement : UiElements) {
+        _window->draw(*UiElement);
+    }
+
     _window->display();
 }
 
