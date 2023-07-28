@@ -25,7 +25,6 @@ namespace sfui {
     }
 
     void Window::alignToCentre(sf::Vector2i windowSize) {
-        //sf::Vector2i windowSize = Settings::getWindowSize();
         float xPos = ((float)windowSize.x - this->size.x) / 2.0f;
         float yPos = ((float)windowSize.y - this->size.y) / 2.0f;
         this->position = sf::Vector2f(xPos, yPos);
@@ -34,7 +33,6 @@ namespace sfui {
     void Window::mouseMovement(sf::Vector2i mousePosition) {
         oldMousePos = newMousePos;
         newMousePos = mousePosition;
-        printf("window currently held %d\n", isCurrentlyHeld);
         if (isCurrentlyHeld) {
             position += sf::Vector2f(newMousePos.x - oldMousePos.x, newMousePos.y - oldMousePos.y);
         }

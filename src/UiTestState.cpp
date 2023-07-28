@@ -1,6 +1,6 @@
 #include "UiTestState.h"
 
-UiTestState::UiTestState(std::shared_ptr<Context> &context) : context(context), mouseHold(false) {
+UiTestState::UiTestState(std::shared_ptr<Context> &context) : context(context) {
 
     sliderValue = std::make_shared<int>(10);
     std::unique_ptr<sfui::Slider<int>> slider = std::make_unique<sfui::Slider<int>>(sf::Vector2f(300.0f, 8.0f), sf::Vector2f(10.0f, 10.0f), 1, 100, sliderValue);
@@ -30,18 +30,13 @@ void UiTestState::ProcessInput() {
                     break;
             }
         } else if (event.type == sf::Event::MouseButtonPressed) {
-            if(!mouseHold) {
-                mouseHoldChanged = true;
-            }
 
-            mouseHold = true;
-        } else if (event.type == sf::Event::MouseButtonReleased && mouseHold == true) {
-            if(mouseHold) {
-                mouseHoldChanged = true;
-            }
+            sfui::ClickState::mouseButtonPressed();
 
-            mouseHold = false;
+        } else if (event.type == sf::Event::MouseButtonReleased) {
+
             event.type = sf::Event::Count;
+            sfui::ClickState::mouseButtonReleased();
         }
 
     }
@@ -52,20 +47,20 @@ void UiTestState::Update() {
     mousePosition = sf::Mouse::getPosition(*_window);
 
     for(auto &UiElement : UiElements) {
-        if(mouseHold && mouseHoldChanged) {
+        if(sfui::ClickState::justPressed()) {
             if(UiElement->wasClicked(mousePosition)) {
                 UiElement->mousePressed();
             }
         }
 
-        if(!mouseHold && mouseHoldChanged && UiElement->isActive()) {
+        if(sfui::ClickState::justReleased() && UiElement->isActive()) {
             UiElement->mouseReleased();
         }
 
         UiElement->mouseMovement(mousePosition);
     }
 
-    mouseHoldChanged = false;
+    sfui::ClickState::update();
 }
 
 void UiTestState::Draw() {

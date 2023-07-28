@@ -13,6 +13,7 @@
 #include "Window.h"
 #include "Slider.h"
 #include "InputField.h"
+#include "ClickState.h"
 struct Context;
 
 class UiTestState : public State {
@@ -26,8 +27,6 @@ class UiTestState : public State {
     private:
         std::shared_ptr<Context> context;
 
-        bool mouseHold;
-        bool mouseHoldChanged;
         sf::Vector2i mousePosition;
 
         std::shared_ptr<int> sliderValue;
