@@ -28,6 +28,6 @@ bool sfui::ClickState::holding() {
 }
 
 void sfui::ClickState::update() {
-    //needs to be called at the end of a frame to update the mouseHoldChanged state;
+    //mouse hold changed state can be true only for a single frame, we need to enforce that by calling this method at the end of a frame;
     mouseHoldChanged = false;    
 }

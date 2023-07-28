@@ -8,7 +8,6 @@ namespace sfui {
             Window(sf::Vector2f size, sf::Vector2f position);
             virtual void draw(sf::RenderTarget& target, sf::RenderStates states) const;
             void mouseMovement(sf::Vector2i mousePosition) override;
-
             bool wasClicked(sf::Vector2i mousePosition);
 
         private:

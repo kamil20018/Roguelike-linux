@@ -10,9 +10,9 @@ namespace sfui {
         public:
             Slider();
             Slider(sf::Vector2f size, sf::Vector2f position, T minValue, T maxValue, std::shared_ptr<T> value);
-            void setBarSize(sf::Vector2f size);
-            void setBarColor(sf::Color color);
-            void setBarOutline(sf::Color color, float thickness);
+            Slider& setBarSize(sf::Vector2f size);
+            Slider& setBarColor(sf::Color color);
+            Slider& setBarOutline(sf::Color color, float thickness);
             virtual void draw(sf::RenderTarget& target, sf::RenderStates states) const;
             
             void update(sf::Vector2i mousePosition);
@@ -34,108 +34,112 @@ namespace sfui {
             T currValue;
             std::shared_ptr<T> value;
     };
-}
 
-template<typename T> sfui::Slider<T>::Slider() : UiElement() {}
+    template<typename T> Slider<T>::Slider() : UiElement() {}
 
-template<typename T> sfui::Slider<T>::Slider(sf::Vector2f size, sf::Vector2f position, T minValue, T maxValue, std::shared_ptr<T> value) 
-        : UiElement()
-        , minValue(minValue)
-        , maxValue(maxValue) 
-        , currValue(minValue)
-        , value(value) {
-    slider.setFillColor(sf::Color::White);
-    slider.setSize(size);
-    slider.setPosition(position);
-}
+    template<typename T> Slider<T>::Slider(sf::Vector2f size, sf::Vector2f position, T minValue, T maxValue, std::shared_ptr<T> value) 
+            : UiElement()
+            , minValue(minValue)
+            , maxValue(maxValue) 
+            , currValue(minValue)
+            , value(value) {
+        slider.setFillColor(sf::Color::White);
+        slider.setSize(size);
+        slider.setPosition(position);
+    }
 
-template<typename T>
-void sfui::Slider<T>::draw(sf::RenderTarget& target, sf::RenderStates states) const {
-    target.draw(slider);
-    target.draw(bar);
-}
+    template<typename T>
+    void Slider<T>::draw(sf::RenderTarget& target, sf::RenderStates states) const {
+        target.draw(slider);
+        target.draw(bar);
+    }
 
-template<typename T>
-void sfui::Slider<T>::setBarSize(sf::Vector2f size) {
-    sf::Vector2f sliderSize = slider.getSize();
-    sf::Vector2f sliderPosition = slider.getPosition();
-    bar.setSize(size);
-    bar.setPosition(sf::Vector2f(
-        sliderPosition.x - size.x / 2.0f,
-        sliderPosition.y - size.y / 2.0f + sliderSize.y / 2.0f
-    ));
-}
-
-template<typename T>
-void sfui::Slider<T>::setBarColor(sf::Color color) {
-    bar.setFillColor(color);
-}
-
-template<typename T>
-void sfui::Slider<T>::setBarOutline(sf::Color color, float thickness) {
-    bar.setOutlineColor(color);
-    bar.setOutlineThickness(thickness);
-}
-
-template<typename T>
-bool sfui::Slider<T>::wasClicked(sf::Vector2i mousePosition) {
-    sf::Vector2f sliderPosition = slider.getPosition();
-    sf::Vector2f sliderSize = slider.getSize();
-    return sliderPosition.x < mousePosition.x &&
-           mousePosition.x < sliderPosition.x + sliderSize.x &&
-           sliderPosition.y < mousePosition.y &&
-           mousePosition.y < sliderPosition.y + sliderSize.y;     
-}
-
-template<typename T>
-void sfui::Slider<T>::update(sf::Vector2i mousePosition) {
-    if(isCurrentlyHeld){
-
-        sf::Vector2f barPosition = bar.getPosition();
+    template<typename T>
+    Slider<T>& Slider<T>::setBarSize(sf::Vector2f size) {
+        sf::Vector2f sliderSize = slider.getSize();
         sf::Vector2f sliderPosition = slider.getPosition();
+        bar.setSize(size);
+        bar.setPosition(sf::Vector2f(
+            sliderPosition.x - size.x / 2.0f,
+            sliderPosition.y - size.y / 2.0f + sliderSize.y / 2.0f
+        ));
+        return *this;
+    }
 
-        if(sliderPosition.x > mousePosition.x){
-            bar.setPosition(sf::Vector2f(sliderPosition.x, barPosition.y));
-            return;
-        }
+    template<typename T>
+    Slider<T>& Slider<T>::setBarColor(sf::Color color) {
+        bar.setFillColor(color);
+        return *this;
+    }
 
-        if(sliderPosition.x + slider.getSize().x < mousePosition.x){
-            bar.setPosition(sf::Vector2f(sliderPosition.x + slider.getSize().x, barPosition.y));
-            return;
-        }
+    template<typename T>
+    Slider<T>& Slider<T>::setBarOutline(sf::Color color, float thickness) {
+        bar.setOutlineColor(color);
+        bar.setOutlineThickness(thickness);
+        return *this;
+    }
 
-        bar.setPosition(sf::Vector2f(mousePosition.x, barPosition.y));
-
-        currValue = minValue + (maxValue - minValue) / (slider.getSize().x / (bar.getPosition().x - slider.getPosition().x));
-        *value = currValue;
-    }    
-}
-
-template<typename T>
-void sfui::Slider<T>::mouseMovement(sf::Vector2i mousePosition) {
-    if(isCurrentlyHeld){
-
-        sf::Vector2f barPosition = bar.getPosition();
+    template<typename T>
+    bool Slider<T>::wasClicked(sf::Vector2i mousePosition) {
         sf::Vector2f sliderPosition = slider.getPosition();
+        sf::Vector2f sliderSize = slider.getSize();
+        return sliderPosition.x < mousePosition.x &&
+            mousePosition.x < sliderPosition.x + sliderSize.x &&
+            sliderPosition.y < mousePosition.y &&
+            mousePosition.y < sliderPosition.y + sliderSize.y;     
+    }
 
-        if(sliderPosition.x > mousePosition.x){
-            bar.setPosition(sf::Vector2f(sliderPosition.x, barPosition.y));
-            return;
-        }
+    template<typename T>
+    void Slider<T>::update(sf::Vector2i mousePosition) {
+        if(isCurrentlyHeld){
 
-        if(sliderPosition.x + slider.getSize().x < mousePosition.x){
-            bar.setPosition(sf::Vector2f(sliderPosition.x + slider.getSize().x, barPosition.y));
-            return;
-        }
+            sf::Vector2f barPosition = bar.getPosition();
+            sf::Vector2f sliderPosition = slider.getPosition();
 
-        bar.setPosition(sf::Vector2f(mousePosition.x, barPosition.y));
+            if(sliderPosition.x > mousePosition.x){
+                bar.setPosition(sf::Vector2f(sliderPosition.x, barPosition.y));
+                return;
+            }
 
-        currValue = minValue + (maxValue - minValue) / (slider.getSize().x / (bar.getPosition().x - slider.getPosition().x));
-        *value = currValue;
-    }    
+            if(sliderPosition.x + slider.getSize().x < mousePosition.x){
+                bar.setPosition(sf::Vector2f(sliderPosition.x + slider.getSize().x, barPosition.y));
+                return;
+            }
+
+            bar.setPosition(sf::Vector2f(mousePosition.x, barPosition.y));
+
+            currValue = minValue + (maxValue - minValue) / (slider.getSize().x / (bar.getPosition().x - slider.getPosition().x));
+            *value = currValue;
+        }    
+    }
+
+    template<typename T>
+    void Slider<T>::mouseMovement(sf::Vector2i mousePosition) {
+        if(isCurrentlyHeld){
+
+            sf::Vector2f barPosition = bar.getPosition();
+            sf::Vector2f sliderPosition = slider.getPosition();
+
+            if(sliderPosition.x > mousePosition.x){
+                bar.setPosition(sf::Vector2f(sliderPosition.x, barPosition.y));
+                return;
+            }
+
+            if(sliderPosition.x + slider.getSize().x < mousePosition.x){
+                bar.setPosition(sf::Vector2f(sliderPosition.x + slider.getSize().x, barPosition.y));
+                return;
+            }
+
+            bar.setPosition(sf::Vector2f(mousePosition.x, barPosition.y));
+
+            currValue = minValue + (maxValue - minValue) / (slider.getSize().x / (bar.getPosition().x - slider.getPosition().x));
+            *value = currValue;
+        }    
+    }
+
+    template<typename T>
+    T Slider<T>::getValue() {
+        return currValue;  
+    }
 }
 
-template<typename T>
-T sfui::Slider<T>::getValue() {
-    return currValue;  
-}
