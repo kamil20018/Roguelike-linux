@@ -14,6 +14,7 @@
 #include "Slider.h"
 #include "InputField.h"
 #include "ClickState.h"
+#include <optional>
 struct Context;
 
 class UiTestState : public State {
@@ -28,7 +29,7 @@ class UiTestState : public State {
         std::shared_ptr<Context> context;
 
         sf::Vector2i mousePosition;
-
+        std::optional<std::string> currText;
         std::shared_ptr<int> sliderValue;
         std::vector<std::unique_ptr<sfui::UiElement>> UiElements;
 };

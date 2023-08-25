@@ -4,11 +4,11 @@ namespace sfui {
     class UiElement : public sf::Drawable {
         public: 
         
-            bool isActive() {
+            virtual bool isActive() {
                 return isCurrentlyHeld;    
             }
 
-            void mousePressed() {
+            virtual void mousePressed() {
                 isCurrentlyHeld = true;    
             }
 
@@ -17,7 +17,7 @@ namespace sfui {
             }
 
             virtual void mouseMovement(sf::Vector2i mousePosition){};
-            virtual void keyboardInput(sf::Keyboard::Key keyboardInput){};
+            virtual void textEntered(std::string text){};
             virtual bool wasClicked(sf::Vector2i mousePosition) = 0;            
         protected:
 
