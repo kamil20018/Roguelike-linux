@@ -17,7 +17,7 @@ namespace sfui {
             }
 
             virtual void mouseMovement(sf::Vector2i mousePosition){};
-            virtual void textEntered(std::string text){};
+            virtual void textEntered(char text){};
             virtual bool wasClicked(sf::Vector2i mousePosition) = 0;            
         protected:
 

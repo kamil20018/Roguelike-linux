@@ -1,6 +1,6 @@
 #include "UiTestState.h"
 #include <typeinfo>
-UiTestState::UiTestState(std::shared_ptr<Context> &context) : context(context) {
+UiTestState::UiTestState(std::shared_ptr<Context> &context) : context(context), textInField(std::make_shared<std::string>()) {
 
     sliderValue = std::make_shared<int>(10);
     std::unique_ptr<sfui::Slider<int>> slider = std::make_unique<sfui::Slider<int>>(sf::Vector2f(300.0f, 8.0f), sf::Vector2f(10.0f, 10.0f), 1, 100, sliderValue);
@@ -10,7 +10,7 @@ UiTestState::UiTestState(std::shared_ptr<Context> &context) : context(context) {
 
     UiElements.push_back(std::move(slider));
     UiElements.push_back(std::make_unique<sfui::Window>(sf::Vector2f(200.0f, 100.0f), sf::Vector2f(100.0f, 100.0f)));
-    UiElements.push_back(std::make_unique<sfui::InputField>(sf::Vector2f(200.0f, 20.0f), sf::Vector2f(300.0f, 300.0f)));
+    UiElements.push_back(std::make_unique<sfui::InputField>(sf::Vector2f(200.0f, 20.0f), sf::Vector2f(300.0f, 300.0f), textInField));
 
 }
 
@@ -39,8 +39,7 @@ void UiTestState::ProcessInput() {
             event.type = sf::Event::Count;
             sfui::ClickState::mouseButtonReleased();
         } else if (event.type == sf::Event::TextEntered){
-            currText = std::string{(char)event.text.unicode};
-
+            currText = (char)event.text.unicode;
         }
 
     }
@@ -61,8 +60,7 @@ void UiTestState::Update() {
             UiElement->mouseReleased();
         }
 
-        if(currText){
-            std::cout << "not unknown" << std::endl;
+        if(currText && UiElement->isActive()){
             UiElement->textEntered(*currText);
         }
 

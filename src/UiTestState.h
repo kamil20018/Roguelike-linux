@@ -29,7 +29,8 @@ class UiTestState : public State {
         std::shared_ptr<Context> context;
 
         sf::Vector2i mousePosition;
-        std::optional<std::string> currText;
+        std::optional<char> currText;
         std::shared_ptr<int> sliderValue;
+        std::shared_ptr<std::string> textInField;
         std::vector<std::unique_ptr<sfui::UiElement>> UiElements;
 };
