@@ -3,6 +3,7 @@
 #include "Game.h"
 #include "MainMenu.h"
 #include "UiTestState.h"
+#include "SettingsState.h"
 #include "GamePlay.h"
 #include "Settings.h"
 Game::Game() : context(std::make_shared<Context>()) {
@@ -16,7 +17,9 @@ Game::Game() : context(std::make_shared<Context>()) {
 
     //_states->AddState(std::make_unique<MainMenu>(this->context));
     //_states->AddState(std::make_unique<GamePlay>(this->context, true));
-    _states->AddState(std::make_unique<UiTestState>(this->context));
+    //_states->AddState(std::make_unique<UiTestState>(this->context));
+
+    _states->AddState(std::make_unique<SettingsState>(this->context));
 
 
 }

@@ -28,12 +28,12 @@ target_sources(game
     ${CMAKE_CURRENT_LIST_DIR}/StateManager.cpp
     ${CMAKE_CURRENT_LIST_DIR}/Settings.cpp
     ${CMAKE_CURRENT_LIST_DIR}/UiTestState.cpp
-    ${CMAKE_CURRENT_LIST_DIR}/Decoration.cpp
     ${CMAKE_CURRENT_LIST_DIR}/MapParser.cpp
     ${CMAKE_CURRENT_LIST_DIR}/Tile.cpp
     ${CMAKE_CURRENT_LIST_DIR}/TileChunk.cpp
     ${CMAKE_CURRENT_LIST_DIR}/TileLoader.cpp
     ${CMAKE_CURRENT_LIST_DIR}/WorldGenerator.cpp
+    ${CMAKE_CURRENT_LIST_DIR}/SettingsState.cpp
   PUBLIC
     ${CMAKE_CURRENT_LIST_DIR}/AssetManager.h
     ${CMAKE_CURRENT_LIST_DIR}/Chunked.h
@@ -53,10 +53,10 @@ target_sources(game
     ${CMAKE_CURRENT_LIST_DIR}/StateManager.h
     ${CMAKE_CURRENT_LIST_DIR}/Settings.h
     ${CMAKE_CURRENT_LIST_DIR}/UiTestState.h
-    ${CMAKE_CURRENT_LIST_DIR}/Decoration.h
     ${CMAKE_CURRENT_LIST_DIR}/MapParser.h
     ${CMAKE_CURRENT_LIST_DIR}/Tile.h
     ${CMAKE_CURRENT_LIST_DIR}/TileChunk.h
     ${CMAKE_CURRENT_LIST_DIR}/TileLoader.h
     ${CMAKE_CURRENT_LIST_DIR}/WorldGenerator.h
+    ${CMAKE_CURRENT_LIST_DIR}/SettingsState.h
   )
